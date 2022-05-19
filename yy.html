@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>520</title>
+		<style type="text/css">
+			#thenceThen {
+				font-size: 2em;
+			}
+		</style>
+		<script type="text/javascript">
+			function thenceThen() {
+				var theTime = "2022/2/2"
+				var endTime = new Date(theTime);
+				var totalSecs = (new Date() - endTime) / 1000;
+				var days = Math.floor(totalSecs / 3600 / 24);
+				var hours = Math.floor((totalSecs - days * 24 * 3600) / 3600);
+				var mins = Math.floor((totalSecs - days * 24 * 3600 - hours * 3600) / 60);
+				var secs = Math.floor((totalSecs - days * 24 * 3600 - hours * 3600 - mins * 60));
+				if (days != 0) {
+					document.getElementById("thenceThen").innerHTML = days + "天" + hours + "小时" + mins + "分钟" + secs + "秒";
+				} else if (hours == 0 && mins == 0) {
+					document.getElementById("thenceThen").innerHTML = secs + "秒";
+				} else if (hours == 0 && mins != 0) {
+					document.getElementById("thenceThen").innerHTML = mins + "分钟" + secs + "秒";
+				} else if (hours != 0) {
+					document.getElementById("thenceThen").innerHTML = hours + "小时" + mins + "分钟" + secs + "秒";
+				}
+			}
+			var clock;
+			window.onload = function() {
+				clock = setInterval("thenceThen()", 500);
+			}
+		</script>
+
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				background: pink;
+			}
+
+			.box {
+				width: 120px;
+				height: 120px;
+				background: #ff0000;
+				margin: 200px auto;
+				margin-bottom: 80px;
+				/* 盒子旋转45度 */
+				transform: rotate(45deg) scale(0.9);
+				/* 绑定动画 */
+				animation: change 1s infinite;
+				box-shadow: 0 0 30px 5px rgba(255, 0, 0, 0.7);
+			}
+
+			.box::after,
+			.box::before {
+				content: "";
+				position: absolute;
+				width: 120px;
+				height: 120px;
+				background: #ff0000;
+				border-radius: 50%;
+				box-shadow: 0 0 30px 5px rgba(255, 0, 0, 0.7);
+			}
+
+			.box::after {
+				left: -68px;
+			}
+
+			.box::before {
+				top: -68px;
+			}
+
+			/* 创建动画 */
+			@keyframes change {
+				0% {
+					transform: rotate(45deg) scale(0.85);
+				}
+
+				50% {
+					transform: rotate(45deg) scale(1);
+				}
+
+				100% {
+					transform: rotate(45deg) scale(0.85);
+				}
+			}
+			#thenceThen{
+				text-align: center;
+					font-size: 50px;
+					font-weight: 820;
+					color: rgba(255, 0, 0, 0.5);
+					/* 文字阴影 */
+					text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+				
+			}
+
+			p {
+				text-align: center;
+				font-size: 30px;
+				font-weight: 520;
+				color: rgba(255, 0, 0, 0.5);
+				/* 文字阴影 */
+				text-shadow: 0 0 2px rgba(255, 0, 0, 0.5);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box"></div>
+		<p><span style="font-weight:1000">GeGe</span> && <span style="font-weight:1000">YuanMei</span></p><br/>
+		<p>Total time since You as my Fiancee: </p>
+		<p id="thenceThen"></p>
+
+	</body>
+
+</html>
